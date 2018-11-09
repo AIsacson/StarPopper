@@ -42,9 +42,9 @@ public class Player : MonoBehaviour {
 			other.gameObject.SetActive (false);
 			gameController.AddScore (score);
 		}
-		if (other.tag == "Flag") {
+		/*if (other.tag == "Flag") {
 			//gameController.StartNextStage ();
 			Destroy (other.gameObject);
-		}
+		}*/
 	}
 }
