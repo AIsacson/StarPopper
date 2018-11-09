@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
 	private Controller controller;
 	private GameController gameController;
 	private int score;
+	private AudioSource plopSound;
 
 	// Use this for initialization
 	void Awake() {
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void Start() {
+		plopSound = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Cube") {
+			plopSound.Play ();
 			other.gameObject.SetActive (false);
 			gameController.AddScore (score);
 		}
