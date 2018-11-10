@@ -19,8 +19,9 @@ public class Timer : MonoBehaviour {
 		StartTimer ();
 	}
 
-	public void StopTimer(boolean stop) {
+	public string StopTimer(bool stop) {
 		stopped = stop;
+		return timer.text;
 	}
 
 	void StartTimer() {

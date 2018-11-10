@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
 	public Transform[] cubesSpawnPoints;
 	public GameObject cube;
 	public Text scoreBoard;
+	public Canvas winboard;
+	public Text finalTime;
+	public Button restart;
 
 	private int score;
 	private Timer timer;
+	private string time;
 
 	// Use this for initialization
 	void Awake () {
@@ -20,6 +25,7 @@ public class GameController : MonoBehaviour {
 
 	void Start() {
 		timer = FindObjectOfType<Timer> ();
+		winboard.enabled = false;
 	}
 
 	void SpawnFirstCubes() {
@@ -34,9 +40,15 @@ public class GameController : MonoBehaviour {
 
 	}
 
+	void ShowWinText() {
+		finalTime.text = time;
+		winboard.enabled = true;
+	}
+
 	void UpdateScore() {
 		if (score == 25) {
-			timer.StopTimer (true);
+			time = timer.StopTimer (true);
+			ShowWinText ();
 		}
 		scoreBoard.text = "Score: " + score;
 	}

@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
 	public Rigidbody rb;
 	public float speed;
+	public GameObject child;
 
 	private float moveHorizontal;
 	private float moveVertical;
@@ -24,6 +25,10 @@ public class Player : MonoBehaviour {
 
 	void Start() {
 		plopSound = GetComponent<AudioSource> ();
+	}
+
+	void LateUpdate() {
+		child.transform.rotation = Quaternion.Euler(0.0f, 0.0f, this.transform.rotation.z * -1.0f);
 	}
 	
 	// Update is called once per frame
